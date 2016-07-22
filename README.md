@@ -33,6 +33,7 @@ Update the aliases section with:
     'YandexTranslate'      => 'Bluora\Yandex\Facades\YandexTranslateFacade',
 ]
 
+```
 
 In `config/services.php`:
 
