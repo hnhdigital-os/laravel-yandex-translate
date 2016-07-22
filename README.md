@@ -53,11 +53,24 @@ You can then add YANDEX_TRANSLATE_KEY=myapihere to your .env file.
 
 ```php
 echo YandexTranslate::translate('Hello world', 'en', 'ru');
+echo YandexTranslate::translate('Hello world!', 'en', 'fr');
+echo YandexTranslate::translate('Hello world!', false, 'fr');
+echo YandexTranslate::translate('Hello world!', false, 'fr')->getOriginalLanguage();
+print_r(YandexTranslate::translate(['Hello world!', 'I love you'], 'en', 'fr'));
 ```
 
 Would output:
 ```
 Привет мир
+Bonjour tout le monde!
+Bonjour tout le monde!
+en
+Array
+(
+    [0] => Bonjour tout le monde!
+    [1] => Je vous aime
+)
+
 ```
 
 ##Yandex API Key
