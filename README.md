@@ -28,7 +28,7 @@ Update the aliases section with:
 ```php
 'aliases' => [
     ...
-    'YandexTranslate'      => 'Bluora\Yandex\Facades\YandexTranslateFacade',
+    'YandexTranslate' => Bluora\Yandex\Facades\YandexTranslateFacade::class,
 ]
 
 ```
