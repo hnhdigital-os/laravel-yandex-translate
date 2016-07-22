@@ -1,11 +1,11 @@
 # Yandex Translate Provider for Laravel 5
 
 [![Latest Stable Version](https://poser.pugx.org/bluora/laravel-yandex-translate/v/stable.svg)](https://packagist.org/packages/bluora/laravel-yandex-translate) [![Total Downloads](https://poser.pugx.org/bluora/laravel-yandex-translate/downloads.svg)](https://packagist.org/packages/bluora/laravel-yandex-translate) [![Latest Unstable Version](https://poser.pugx.org/bluora/laravel-yandex-translate/v/unstable.svg)](https://packagist.org/packages/bluora/laravel-yandex-translate) [![License](https://poser.pugx.org/bluora/laravel-yandex-translate/license.svg)](https://packagist.org/packages/bluora/laravel-yandex-translate)
-[![Build Status](https://travis-ci.org/bluora/laravel-yandex-translate.svg?branch=master)](https://travis-ci.org/bluora/laravel-yandex-translate) [![StyleCI](https://styleci.io/repos/53236988/shield)](https://styleci.io/repos/53236988) [![Test Coverage](https://codeclimate.com/github/bluora/laravel-yandex-translate/badges/coverage.svg)](https://codeclimate.com/github/bluora/laravel-yandex-translate/coverage) [![Code Climate](https://codeclimate.com/github/bluora/laravel-yandex-translate/badges/gpa.svg)](https://codeclimate.com/github/bluora/laravel-yandex-translate)
+[![Build Status](https://travis-ci.org/bluora/laravel-yandex-translate.svg?branch=master)](https://travis-ci.org/bluora/laravel-yandex-translate) [![StyleCI](https://styleci.io/repos/63908175/shield)](https://styleci.io/repos/63908175) [![Test Coverage](https://codeclimate.com/github/bluora/laravel-yandex-translate/badges/coverage.svg)](https://codeclimate.com/github/bluora/laravel-yandex-translate/coverage) [![Code Climate](https://codeclimate.com/github/bluora/laravel-yandex-translate/badges/gpa.svg)](https://codeclimate.com/github/bluora/laravel-yandex-translate)
 
-### This package is compatible with Laravel 5.*
+### This package is compatible with Laravel 5.
 
-## Installation
+*## Installation
 
 Install using composer:
 
