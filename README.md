@@ -75,4 +75,4 @@ Array
 
 ##Yandex API Key
 
-You can get your API key (here)[http://api.yandex.com/key/form.xml?service=trnsl].
+You can get your API key [here](http://api.yandex.com/key/form.xml?service=trnsl).
