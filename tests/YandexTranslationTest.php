@@ -24,7 +24,8 @@ class YandexTranslationTest extends BaseTestCase
         $app->singleton('config', 'Illuminate\Config\Repository');
         Facade::setFacadeApplication($app);
         $app['app']->set('aliases.Config', Illuminate\Support\Facades\Config::class);
-        $app['config']->set('services.yandex-translate.key', include_once('yandex.api.key.php'));
+        $api_key = (empty(getenv('YANDEX_API_KEY'))) ? include_once 'yandex.api.key.php' : getenv('YANDEX_API_KEY');
+        $app['config']->set('services.yandex-translate.key', $api_key);
         $this->translate = new Translate();
     }
 
