@@ -9,7 +9,7 @@
 Install using composer:
 
 ```
-composer require bluora/laravel-yandex-translate dev-master
+composer require bluora/laravel-yandex-translate ~1.0
 ```
 
 Add class to the service provider list.
