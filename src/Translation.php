@@ -34,6 +34,13 @@ class Translation
     {
         $this->source = $source;
         $this->result = $result;
+
+        // Match the source array's keys if provided
+        if (is_array($this->source)) {
+            $source_keys = array_keys($this->source);
+            $this->result = array_combine($source_keys, $this->result);
+        }
+        
         $this->language = explode('-', $language);
     }
 

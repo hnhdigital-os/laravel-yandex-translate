@@ -80,4 +80,21 @@ class YandexTranslationTest extends BaseTestCase
         $this->assertEquals($from_langauge, $transation->getOriginalLanguage());
         $this->assertEquals($to_langauge, $transation->getTranslationLanguage());
     }
+
+    /**
+     * Test translation of more than one word.
+     */
+    public function testTranslateMultipleWordsMatchingKeys()
+    {
+        $from_word = [22 => 'Hello world!', 30 => 'I love you'];
+        $from_langauge = 'en';
+        $to_langauge = 'fr';
+        $to_word = [22 => 'Bonjour tout le monde!', 30 => 'Je vous aime'];
+        $transation = $this->translate->translate($from_word, $from_langauge, $to_langauge);
+
+        $this->assertEquals($from_word, $transation->getOriginal());
+        $this->assertEquals($to_word, $transation->getTranslation());
+        $this->assertEquals($from_langauge, $transation->getOriginalLanguage());
+        $this->assertEquals($to_langauge, $transation->getTranslationLanguage());
+    }
 }
