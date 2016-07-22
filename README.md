@@ -12,8 +12,6 @@ Install using composer:
 composer require bluora/laravel-yandex-translate ~1.0
 ```
 
-Add class to the service provider list.
-
 In `config/app.php`:
 
 Update the providers section with:
