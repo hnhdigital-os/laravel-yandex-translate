@@ -3,10 +3,10 @@
 namespace Bluora\Yandex;
 
 /**
- * Exception
+ * Exception.
+ *
  * @author Nikita Gusakov <dev@nkt.me>
  */
 class Exception extends \Exception
 {
-
 }

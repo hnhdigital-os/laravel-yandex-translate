@@ -3,7 +3,8 @@
 namespace Bluora\Yandex;
 
 /**
- * Translation
+ * Translation.
+ *
  * @author Nikita Gusakov <dev@nkt.me>
  */
 class Translation
@@ -28,6 +29,7 @@ class Translation
      * @param string|array $source   The source text
      * @param string|array $result   The translation result
      * @param string       $language Translation language
+     *
      * @return self
      */
     public function __construct($source, $result, $language)
@@ -92,7 +94,7 @@ class Translation
     public function __toString()
     {
         if (is_array($this->result)) {
-            return join(' ', $this->result);
+            return implode(' ', $this->result);
         }
 
         return (string) $this->result;

@@ -1,12 +1,12 @@
 <?php
+
 namespace Bluora\Yandex\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Bluora\Yandex\Translate;
+use Illuminate\Support\ServiceProvider;
 
 class YandexTranslateServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -22,7 +22,7 @@ class YandexTranslateServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('YandexTranslate', function () {
-            return new Translate;
+            return new Translate();
         });
     }
 

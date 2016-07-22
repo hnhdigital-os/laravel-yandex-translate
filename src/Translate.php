@@ -5,8 +5,10 @@ namespace Bluora\Yandex;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Translate
+ * Translate.
+ *
  * @author Nikita Gusakov <dev@nkt.me>
+ *
  * @link   http://api.yandex.com/translate/doc/dg/reference/translate.xml
  */
 class Translate
@@ -33,7 +35,9 @@ class Translate
      * @link http://api.yandex.com/key/keyslist.xml Get a free API key on this page.
      *
      * @param  $key API key to override config.
+     *
      * @throws Exception
+     *
      * @return self
      *
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
@@ -54,12 +58,13 @@ class Translate
      * @link http://api.yandex.com/translate/doc/dg/reference/getLangs.xml
      *
      * @param string $culture If set, the service's response will contain a list of language codes
+     *
      * @return array
      */
     public function getSupportedLanguages($culture = null)
     {
         return $this->execute('getLangs', [
-            'ui' => $culture
+            'ui' => $culture,
         ]);
     }
 
@@ -69,12 +74,13 @@ class Translate
      * @link http://api.yandex.com/translate/doc/dg/reference/detect.xml
      *
      * @param string $text The text to detect the language for.
+     *
      * @return string
      */
     public function detect($text)
     {
         $data = $this->execute('detect', [
-            'text' => $text
+            'text' => $text,
         ]);
 
         return $data['lang'];
@@ -89,6 +95,7 @@ class Translate
      * @param string       $language Translation direction (for example, "en-ru" or "ru").
      * @param bool         $html     Text format, if true - html, otherwise plain.
      * @param int          $options  Translation options.
+     *
      * @return array
      *
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
@@ -106,7 +113,7 @@ class Translate
             'text'    => $text,
             'lang'    => $lang,
             'format'  => $html ? 'html' : 'plain',
-            'options' => $options
+            'options' => $options,
         ]);
 
         if (!is_array($text)) {
@@ -121,7 +128,9 @@ class Translate
      *
      * @param string $uri
      * @param array  $parameters
+     *
      * @throws Exception
+     *
      * @return array
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
@@ -129,7 +138,7 @@ class Translate
     protected function execute($uri, array $parameters)
     {
         $parameters['key'] = $this->key;
-        curl_setopt($this->handler, CURLOPT_URL, static::BASE_URL . $uri);
+        curl_setopt($this->handler, CURLOPT_URL, static::BASE_URL.$uri);
         curl_setopt($this->handler, CURLOPT_POST, true);
 
         $post = http_build_query($parameters);
