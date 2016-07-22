@@ -33,7 +33,7 @@ class YandexTranslationTest extends BaseTestCase
 
     /**
      * Test translation of a word with original and requested translation language provided.
-     *
+     */
     public function testTranslate()
     {
         $from_word = 'Hello world!';
@@ -77,12 +77,10 @@ class YandexTranslationTest extends BaseTestCase
 
         $this->assertEquals($from_word, $transation->getOriginal());
         $this->assertEquals($to_word, $transation->getTranslation());
-        $this->assertEquals($from_langauge, $transation->getOriginalLanguage());
-        $this->assertEquals($to_langauge, $transation->getTranslationLanguage());
     }
 
     /**
-     * Test translation of more than one word.
+     * Test translation of array of words with specific (integer based) keys.
      */
     public function testTranslateMultipleWordsMatchingKeys()
     {
@@ -94,7 +92,20 @@ class YandexTranslationTest extends BaseTestCase
 
         $this->assertEquals($from_word, $transation->getOriginal());
         $this->assertEquals($to_word, $transation->getTranslation());
-        $this->assertEquals($from_langauge, $transation->getOriginalLanguage());
-        $this->assertEquals($to_langauge, $transation->getTranslationLanguage());
+    }
+
+    /**
+     * Test translation of array of words with specific (string based) keys.
+     */
+    public function testTranslateMultipleWordsMatchingKeysWithWords()
+    {
+        $from_word = ['first_word' => 'Hello world!', 'second_word' => 'I love you'];
+        $from_langauge = 'en';
+        $to_langauge = 'fr';
+        $to_word = ['first_word' => 'Bonjour tout le monde!', 'second_word' => 'Je vous aime'];
+        $transation = $this->translate->translate($from_word, $from_langauge, $to_langauge);
+
+        $this->assertEquals($from_word, $transation->getOriginal());
+        $this->assertEquals($to_word, $transation->getTranslation());
     }
 }

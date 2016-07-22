@@ -108,6 +108,11 @@ class Translate
     {
         $lang = (empty($from_language)) ? $to_language : $from_language.'-'.$to_language;
 
+        // Remove any string based keys
+        if (is_array($original_text = $text)) {
+            $text = array_values($text);
+        }
+
         $data = $this->execute('translate', [
             'text'    => $text,
             'lang'    => $lang,
@@ -119,7 +124,7 @@ class Translate
             $data['text'] = array_shift($data['text']);
         }
 
-        return new Translation($text, $data['text'], $data['lang']);
+        return new Translation($original_text, $data['text'], $data['lang']);
     }
 
     /**

@@ -40,7 +40,7 @@ class Translation
             $source_keys = array_keys($this->source);
             $this->result = array_combine($source_keys, $this->result);
         }
-        
+
         $this->language = explode('-', $language);
     }
 

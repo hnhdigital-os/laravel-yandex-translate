@@ -56,6 +56,7 @@ echo YandexTranslate::translate('Hello world!', false, 'fr');
 echo YandexTranslate::translate('Hello world!', false, 'fr')->getOriginalLanguage();
 print_r(YandexTranslate::translate(['Hello world!', 'I love you'], 'en', 'fr'));
 print_r(YandexTranslate::translate([22 => 'Hello world!', 30 => 'I love you'], 'en', 'fr'));
+print_r(YandexTranslate::translate(['first_word' => 'Hello world!', 'second_word' => 'I love you'], 'en', 'fr'));
 ```
 
 Would output:
@@ -73,6 +74,11 @@ Array
 (
     [22] => Bonjour tout le monde!
     [30] => Je vous aime
+)
+Array
+(
+    ['first_word'] => Bonjour tout le monde!
+    ['second_word'] => Je vous aime
 )
 ```
 
