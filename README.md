@@ -55,6 +55,7 @@ echo YandexTranslate::translate('Hello world!', 'en', 'fr');
 echo YandexTranslate::translate('Hello world!', false, 'fr');
 echo YandexTranslate::translate('Hello world!', false, 'fr')->getOriginalLanguage();
 print_r(YandexTranslate::translate(['Hello world!', 'I love you'], 'en', 'fr'));
+print_r(YandexTranslate::translate([22 => 'Hello world!', 30 => 'I love you'], 'en', 'fr'));
 ```
 
 Would output:
@@ -68,7 +69,11 @@ Array
     [0] => Bonjour tout le monde!
     [1] => Je vous aime
 )
-
+Array
+(
+    [22] => Bonjour tout le monde!
+    [30] => Je vous aime
+)
 ```
 
 ##Yandex API Key
