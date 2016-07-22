@@ -1,30 +1,46 @@
 {
-    "name": "bluora/laravel-yandex-translate",
-    "description": "Translate a word or text to a given language using Yandex Translation service.",
-    "keywords": ["laravel","translation","yandex"],
-    "license": "MIT",
-    "authors": [
-        {
-          "name": "Nikita Gusakov",
-          "email": "dev@nkt.me"
-        },
-        {
-            "name": "Rocco Howard",
-            "email": "rocco@bluora.com.au"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "ext-curl": "*"
+  "name": "bluora/laravel-yandex-translate",
+  "description": "Translate a word or text to a given language using Yandex Translation service.",
+  "keywords": ["laravel","translation","yandex"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nikita Gusakov",
+      "email": "dev@nkt.me"
     },
-    "require-dev": {
-        "phpunit/phpunit": "4.*",
-        "codeclimate/php-test-reporter": "dev-master",
-        "phpmd/phpmd" : "@stable"
-    },
-    "autoload": {
-        "psr-4": {
-            "Bluora\\Yandex\\": "src/"
-        }
+    {
+     "name": "Rocco Howard",
+     "email": "rocco@bluora.com.au"
     }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-curl": "*"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "dev-master",
+    "illuminate/config": "5.*",
+    "illuminate/container": "5.*",
+    "illuminate/support": "5.*",
+    "mockery/mockery": "0.9.*",
+    "phpmd/phpmd" : "@stable",
+    "phpunit/phpunit": "4.*",
+    "squizlabs/php_codesniffer": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+        "Bluora\\Yandex\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+        "Bluora\\Yandex\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "composer phpunit && composer phpcs",
+    "phpcs": "./vendor/bin/phpcs -p -s --standard=PSR2 ./src ./tests",
+    "phpunit": "phpunit",
+    "hhvm": "hhvm ./vendor/phpunit/phpunit/phpunit"
+  }
 }

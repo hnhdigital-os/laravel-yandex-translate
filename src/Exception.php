@@ -9,4 +9,4 @@ namespace Bluora\Yandex;
 class Exception extends \Exception
 {
 
-} 
+}

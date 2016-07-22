@@ -42,7 +42,7 @@ class Translation
      *
      * @return string|array The source text
      */
-    public function getSource()
+    public function getOriginal()
     {
         return $this->source;
     }
@@ -52,27 +52,27 @@ class Translation
      *
      * @return array|string The result text
      */
-    public function getResult()
+    public function getTranslation()
     {
         return $this->result;
     }
 
     /**
-     * Get the original source text lanaguage.
+     * Get the original text lanaguage.
      *
      * @return string The source language.
      */
-    public function getSourceLanguage()
+    public function getOriginalLanguage()
     {
         return $this->language[0];
     }
 
     /**
-     * Get the translated source text lanaguage.
+     * Get the translated text's lanaguage.
      *
      * @return string The translated language.
      */
-    public function getResultLanguage()
+    public function getTranslationLanguage()
     {
         return $this->language[1];
     }

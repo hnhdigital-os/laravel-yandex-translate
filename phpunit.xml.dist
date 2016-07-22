@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="tests/bootstrap.php"
+<phpunit bootstrap="./vendor/autoload.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"         
          colors="true"
+         verbose="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
->
-    <testsuites>
-        <testsuite name="Larvel Yandex Translation">
-            <directory suffix=".php">./tests/</directory>
-        </testsuite>
-    </testsuites>
+         syntaxCheck="true">
+  <testsuites>
+    <testsuite name="Larvel Yandex Translation">
+        <directory>./tests/</directory>
+    </testsuite>
+  </testsuites>
   <filter>
     <whitelist>
-      <directory suffix=".php">.</directory>
+      <directory suffix=".php">src/</directory>
       <exclude>
-        <directory suffix=".php">tests</directory>
-        <directory suffix=".php">vendor</directory>
+        <directory suffix=".php">tests/</directory>
+        <directory suffix=".php">vendor/</directory>
       </exclude>
     </whitelist>
   </filter>

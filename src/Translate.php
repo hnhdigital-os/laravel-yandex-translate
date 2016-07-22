@@ -2,7 +2,7 @@
 
 namespace Bluora\Yandex;
 
-use Config;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Translate
@@ -16,6 +16,21 @@ class Translate
     const MESSAGE_API_KEY_MISSING = 'API key is missing';
     const MESSAGE_JSON_ERROR = 'JSON parse error';
     const MESSAGE_INVALID_RESPONSE = 'Invalid response from service';
+
+    /**
+     * Response codes.
+     *
+     * @var array
+     */
+    private static $response_codes = [
+        '200'  => 'Operation completed successfully',
+        '401'  => 'Invalid API key',
+        '402'  => 'Blocked API key',
+        '404'  => 'Exceeded the daily limit on the amount of translated text',
+        '413'  => 'Exceeded the maximum text size',
+        '422'  => 'The text cannot be translated',
+        '501'  => 'The specified translation direction is not supported'
+    ];
 
     /**
      * @var string
@@ -91,23 +106,25 @@ class Translate
      */
     public function translate($text, $from_language, $to_language, $html = false, $options = 0)
     {
-        if (empty($to_language)) {
-            $to_language = $this->detect($text);
-        }
+        $lang = (empty($from_language)) ? $to_language : $from_language.'-'.$to_language;
 
         $data = $this->execute('translate', [
             'text'    => $text,
-            'lang'    => $from_language.'-'.$to_language,
+            'lang'    => $lang,
             'format'  => $html ? 'html' : 'plain',
             'options' => $options
         ]);
+
+        if (!is_array($text)) {
+            $data['text'] = array_shift($data['text']);
+        }
 
         return new Translation($text, $data['text'], $data['lang']);
     }
 
     /**
      * Execute the translation request.
-     * 
+     *
      * @param string $uri
      * @param array  $parameters
      * @throws Exception

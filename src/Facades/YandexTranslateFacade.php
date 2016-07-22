@@ -16,5 +16,4 @@ class YandexTranslateFacade extends Facade
     {
         return 'YandexTranslate';
     }
-
 }

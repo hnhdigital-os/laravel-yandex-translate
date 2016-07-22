@@ -21,7 +21,7 @@ class YandexTranslateServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('YandexTranslate', function() {
+        $this->app->bind('YandexTranslate', function () {
             return new Translate;
         });
     }
@@ -35,5 +35,4 @@ class YandexTranslateServiceProvider extends ServiceProvider
     {
         return [];
     }
-
 }
