@@ -18,21 +18,6 @@ class Translate
     const MESSAGE_INVALID_RESPONSE = 'Invalid response from service';
 
     /**
-     * Response codes.
-     *
-     * @var array
-     */
-    private static $response_codes = [
-        '200'  => 'Operation completed successfully',
-        '401'  => 'Invalid API key',
-        '402'  => 'Blocked API key',
-        '404'  => 'Exceeded the daily limit on the amount of translated text',
-        '413'  => 'Exceeded the maximum text size',
-        '422'  => 'The text cannot be translated',
-        '501'  => 'The specified translation direction is not supported'
-    ];
-
-    /**
      * @var string
      */
     protected $key;
@@ -50,6 +35,8 @@ class Translate
      * @param  $key API key to override config.
      * @throws Exception
      * @return self
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
     public function __construct($key = false)
     {
@@ -103,6 +90,8 @@ class Translate
      * @param bool         $html     Text format, if true - html, otherwise plain.
      * @param int          $options  Translation options.
      * @return array
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
     public function translate($text, $from_language, $to_language, $html = false, $options = 0)
     {
@@ -134,6 +123,8 @@ class Translate
      * @param array  $parameters
      * @throws Exception
      * @return array
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function execute($uri, array $parameters)
     {
@@ -159,10 +150,9 @@ class Translate
             $error_message = self::MESSAGE_UNKNOWN_ERROR;
             if (version_compare(PHP_VERSION, '5.3', '>=')) {
                 if (json_last_error() !== JSON_ERROR_NONE) {
+                    $error_message = self::MESSAGE_JSON_ERROR;
                     if (version_compare(PHP_VERSION, '5.5', '>=')) {
                         $error_message = json_last_error_msg();
-                    } else {
-                        $error_message = self::MESSAGE_JSON_ERROR;
                     }
                 }
             }
