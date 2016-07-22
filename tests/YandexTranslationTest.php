@@ -6,9 +6,6 @@ use Bluora\Yandex\Translate;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @package Bluora\Yandex\Tests
- */
 class YandexTranslationTest extends BaseTestCase
 {
     /**
@@ -17,7 +14,7 @@ class YandexTranslationTest extends BaseTestCase
     private $translate;
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function setUp()
     {
@@ -41,7 +38,7 @@ class YandexTranslationTest extends BaseTestCase
         $to_langauge = 'fr';
         $to_word = 'Bonjour tout le monde!';
         $transation = $this->translate->translate($from_word, $from_langauge, $to_langauge);
-        $this->assertEquals($to_word, (string)$transation);
+        $this->assertEquals($to_word, (string) $transation);
         $this->assertEquals($from_word, $transation->getOriginal());
         $this->assertEquals('en', $transation->getOriginalLanguage());
         $this->assertEquals('fr', $transation->getTranslationLanguage());
