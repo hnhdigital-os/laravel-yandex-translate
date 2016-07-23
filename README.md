@@ -6,7 +6,7 @@
 
 ### This package is compatible with Laravel 5.
 
-*## Installation
+## Installation
 
 Install using composer:
 
