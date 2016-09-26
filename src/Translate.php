@@ -104,23 +104,54 @@ class Translate
     {
         $lang = (empty($from_language)) ? $to_language : $from_language.'-'.$to_language;
 
-        // Remove any string based keys
+        // Remove any string based keys.
         if (is_array($original_text = $text)) {
-            $text = array_values($text);
+            $original_request = array_values($text);
+        } else {
+            $original_request = [$text];
         }
 
-        $data = $this->execute('translate', [
-            'text'    => $text,
-            'lang'    => $lang,
-            'format'  => $html ? 'html' : 'plain',
-            'options' => $options,
-        ]);
+        $translation_characters = 0;
+        $translation_input = [];
+
+        $translation_output = [];
+        $translation_lang = '';;
+
+        while (count($original_request)) {
+
+            // Count current characters.
+            $translation_characters += mb_strlen($original_request[0]);
+
+            // Push the text onto the current input.
+            array_push($translation_input, array_shift($original_request));
+
+            // Translate current data if total characters under 10,000 and
+            // next additional input will take it over 10,0000 (or there is no more input).
+            if ($translation_characters <= 10000
+                && (!isset($original_request[0]) || ($translation_characters + mb_strlen($original_request[0])) > 10000)) {
+                $translation_result = $this->execute('translate', [
+                    'text'    => $translation_input,
+                    'lang'    => $lang,
+                    'format'  => $html ? 'html' : 'plain',
+                    'options' => $options,
+                ]);
+
+                $translation_lang = $translation_result['lang'];
+
+                foreach ($translation_result['text'] as $value) {
+                    array_push($translation_output, $value);
+                }
+
+                $translation_input = [];
+                $translation_characters = 0;
+            }
+        }
 
         if (!is_array($text)) {
-            $data['text'] = array_shift($data['text']);
+            $translation_output = array_shift($translation_output);
         }
 
-        return new Translation($original_text, $data['text'], $data['lang']);
+        return new Translation($original_text, $translation_output, $translation_lang);
     }
 
     /**
