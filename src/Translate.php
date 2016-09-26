@@ -115,7 +115,7 @@ class Translate
         $translation_input = [];
 
         $translation_output = [];
-        $translation_lang = '';;
+        $translation_lang = '';
 
         while (count($original_request)) {
 
